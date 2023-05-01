@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<h2>Top 3 Movie list</h2>
+<p>This page display top 3 rating movies.
+    {% for doc in docs %}
+    <div>
+        <hr class="solid">
+            <strong style="margin-right: 10px;">{{doc.title}}</strong> Rating: {{doc.rating}}, Category: {{doc.category}}, Director: {{doc.director}} <a href="{{ url_for('edit',mongoid=doc._id)}}">Edit</a> | <a href="{{ url_for('delete',mongoid=doc._id)}}">Delete</a> </br>
+			{{doc.description}} </br>			
+    </div>
+    {%endfor%}
+</p>
+{% endblock %}
+

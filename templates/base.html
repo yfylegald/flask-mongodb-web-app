@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Favorite Movie List App</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>My Favorite Movie List App</h1>
+        <p>
+          <a href="{{ url_for('home')}}">Home</a> |
+          <a href="{{ url_for('movie_list')}}">All movies</a> |
+          <a href="{{ url_for('add')}}">Add a movie</a> |
+		  <a href="{{ url_for('top10')}}">Top 3 movies</a>
+        </p>
+      </header>
+      <main>{% block container %} {% endblock %}</main>
+      <footer>
+      </footer>
+    </div>
+  </body>
+</html>
+

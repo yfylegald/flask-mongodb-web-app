@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block container %}
+<p ><font color="red">{{error_message}}</font></p>
+<h2>Update a movie</h2>
+<p>Edit a record in the MongoDB database collection.</p>
+<form method="POST" action="{{ url_for('edit_movie', mongoid=mongoid) }}">
+  <p>Title: <input type="text" id="ftitle" name="ftitle" value="{{data.title}}"/><br /></p>
+  <p>Director: <input type="text" id="fdirector" name="fdirector" value="{{data.director}}"/><br /></p>
+  <p>Rating: <input type="text" id="frating" name="frating" value="{{data.rating}}"/><br /></p>
+  <p>Category: <select id="fcategory" name="fcategory">
+		{% for category in category_list%}
+			<option value="{{category}}" {% if category == data.category %} selected {% endif %}>{{category}}</option>
+		{% endfor %}
+		</select>
+		<br /></p>
+  <p>
+    Description
+    <textarea type="text" id="fdescription" name="fdescription" rows="5" cols="50">{{data.description}}</textarea>
+  </p>
+  <p>
+    <a href="{{ url_for('movie_list')}}">Cancel</a>
+    <input type="submit" name="post-btn" value="Save" />
+  </p>
+</form>
+{% endblock %}
+
